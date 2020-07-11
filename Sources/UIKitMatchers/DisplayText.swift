@@ -3,11 +3,22 @@ import UIKit
 import Nimble
 
 public protocol TextDisplayer {
-    var text: String? { get }
+    var _text: String? { get }
+    var _textColor: UIColor? { get }
 }
 
-extension UILabel: TextDisplayer {}
-extension UITextField: TextDisplayer {}
+extension UILabel: TextDisplayer {
+    public var _text: String? { return self.text }
+    public var _textColor: UIColor? { return self.textColor }
+}
+extension UITextField: TextDisplayer {
+    public var _text: String? { return self.text }
+    public var _textColor: UIColor? { return self.textColor }
+}
+extension UITextView: TextDisplayer {
+    public var _text: String? { return self.text }
+    public var _textColor: UIColor? { return self.textColor }
+}
 
 public func displayText(_ text: String) -> Predicate<TextDisplayer> {
     return Predicate { received in
@@ -17,7 +28,7 @@ public func displayText(_ text: String) -> Predicate<TextDisplayer> {
             return PredicateResult(status: .fail, message: message.appendedBeNilHint())
         }
 
-        return PredicateResult(bool: view.text == text, message: message.appended(details: "got '\(String(describing: view.text))'"))
+        return PredicateResult(bool: view._text == text, message: message.appended(details: "got '\(String(describing: view._text))'"))
     }
 }
 
@@ -29,7 +40,7 @@ public func displayText() -> Predicate<TextDisplayer> {
             return PredicateResult(status: .fail, message: message.appendedBeNilHint())
         }
 
-        return PredicateResult(bool: (view.text ?? "").isEmpty == false, message: message.appended(details: "got '\(String(describing: view.text))'"))
+        return PredicateResult(bool: (view._text ?? "").isEmpty == false, message: message.appended(details: "got '\(String(describing: view._text))'"))
     }
 }
 

@@ -76,6 +76,14 @@ final class DisplayTextSpec: QuickSpec {
             }
         }
 
+        describe("textviews") {
+            itBehavesLikeATextDisplayer { str in
+                let subject = UITextView()
+                subject.text = str
+                return subject
+            }
+        }
+
         describe("textfields") {
             itBehavesLikeATextDisplayer { str in
                 let textField = UITextField()
