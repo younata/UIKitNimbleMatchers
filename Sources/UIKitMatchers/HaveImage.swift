@@ -3,7 +3,15 @@
 import UIKit
 import Nimble
 
-public func haveImage(_ image: UIImage?) -> Predicate<UIImageView> {
+public protocol ImageDisplayer {
+    var _image: UIImage? { get }
+}
+
+extension UIImageView: ImageDisplayer {
+    public var _image: UIImage? { return self.image }
+}
+
+public func haveImage(_ image: UIImage?) -> Predicate<ImageDisplayer> {
     return Predicate { received in
         guard let expectedImage = image else {
             return PredicateResult(status: .fail, message: ExpectationMessage.fail("Expected image was nil"))
@@ -14,11 +22,11 @@ public func haveImage(_ image: UIImage?) -> Predicate<UIImageView> {
             return PredicateResult(status: .fail, message: message.appendedBeNilHint())
         }
 
-        return PredicateResult(bool: view.image == expectedImage, message: message.appended(details: "got '\(String(describing: view.image))'"))
+        return PredicateResult(bool: view._image == expectedImage, message: message.appended(details: "got '\(String(describing: view._image))'"))
     }
 }
 
-public func haveImage() -> Predicate<UIImageView> {
+public func haveImage() -> Predicate<ImageDisplayer> {
     return Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have any image")
 
@@ -26,7 +34,7 @@ public func haveImage() -> Predicate<UIImageView> {
             return PredicateResult(status: .fail, message: message.appendedBeNilHint())
         }
 
-        return PredicateResult(bool: view.image != nil, message: message.appended(details: "got '\(String(describing: view.image))'"))
+        return PredicateResult(bool: view._image != nil, message: message.appended(details: "got '\(String(describing: view._image))'"))
     }
 }
 

@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import UIKit
 import Nimble
 
@@ -44,3 +45,4 @@ public func haveTheDefaultPointerInteraction() -> Predicate<UIButton> {
         return PredicateResult(bool: button.isPointerInteractionEnabled == true && button.pointerStyleProvider == nil, message: message)
     }
 }
+#endif

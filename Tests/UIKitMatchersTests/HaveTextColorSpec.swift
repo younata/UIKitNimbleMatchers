@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import Quick
 import UIKit
 import Nimble
@@ -106,3 +107,4 @@ final class HaveTextColorSpec: QuickSpec {
         }
     }
 }
+#endif
