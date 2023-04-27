@@ -9,7 +9,7 @@ public func beAnAccessibilityElement() -> Predicate<NSObject> {
         guard let item = try received.evaluate() else {
             return PredicateResult(status: .fail, message: ExpectationMessage.expectedTo("be an accessibility element").appendedBeNilHint())
         }
-        let message = ExpectationMessage.expectedCustomValueTo("be an accessibility element", "isAccessibilityElement: \(item.isAccessibilityElement)")
+        let message = ExpectationMessage.expectedCustomValueTo("be an accessibility element", actual: "isAccessibilityElement: \(item.isAccessibilityElement)")
 
         return PredicateResult(bool: item.isAccessibilityElement, message: message)
     }
@@ -22,7 +22,7 @@ public func haveAccessibilityLabel(_ label: String) -> Predicate<NSObject> {
         guard let item = try received.evaluate() else {
             return PredicateResult(status: .fail, message: ExpectationMessage.expectedTo(rawMessage).appendedBeNilHint())
         }
-        let message = ExpectationMessage.expectedCustomValueTo("have accessibility label '\(label)'", item.accessibilityLabel ?? "<nil>")
+        let message = ExpectationMessage.expectedCustomValueTo("have accessibility label '\(label)'", actual: item.accessibilityLabel ?? "<nil>")
 
         guard item.isAccessibilityElement == true else {
             return PredicateResult(status: .fail, message: message.appended(details: "Not an accessibility element"))
@@ -40,7 +40,7 @@ public func haveAccessibilityTraits(_ traits: UIAccessibilityTraits) -> Predicat
         guard let item = try received.evaluate() else {
             return PredicateResult(status: .fail, message: ExpectationMessage.expectedTo(rawMessage).appendedBeNilHint())
         }
-        let message = ExpectationMessage.expectedCustomValueTo(rawMessage, item.accessibilityTraits.description)
+        let message = ExpectationMessage.expectedCustomValueTo(rawMessage, actual: item.accessibilityTraits.description)
 
         if traits.contains(.tabBar) {
             guard item.isAccessibilityElement == false else {
@@ -64,7 +64,7 @@ public func haveAccessibilityValue(_ value: String) -> Predicate<NSObject> {
             return PredicateResult(status: .fail, message: ExpectationMessage.expectedTo(rawMessage).appendedBeNilHint())
         }
 
-        let message = ExpectationMessage.expectedCustomValueTo(rawMessage, item.accessibilityValue ?? "<nil>")
+        let message = ExpectationMessage.expectedCustomValueTo(rawMessage, actual: item.accessibilityValue ?? "<nil>")
 
         guard item.isAccessibilityElement == true else {
             return PredicateResult(status: .fail, message: message.appended(details: "Not an accessibility element"))
@@ -82,7 +82,7 @@ public func haveAccessibilityHint(_ hint: String) -> Predicate<NSObject> {
             return PredicateResult(status: .fail, message: ExpectationMessage.expectedTo(rawMessage).appendedBeNilHint())
         }
 
-        let message = ExpectationMessage.expectedCustomValueTo(rawMessage, item.accessibilityHint ?? "<nil>")
+        let message = ExpectationMessage.expectedCustomValueTo(rawMessage, actual: item.accessibilityHint ?? "<nil>")
 
         guard item.isAccessibilityElement == true else {
             return PredicateResult(status: .fail, message: message.appended(details: "Not an accessibility element"))
