@@ -2,8 +2,8 @@
 import UIKit
 import Nimble
 
-public func beInteractible(insideOf containingView: UIView) -> Predicate<UIView> {
-    return Predicate { received in
+public func beInteractible(insideOf containingView: UIView) -> Nimble.Predicate<UIView> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("be interactible")
 
         guard let view = try received.evaluate() else {
@@ -17,7 +17,7 @@ public func beInteractible(insideOf containingView: UIView) -> Predicate<UIView>
     }
 }
 
-public func beInteractible(insideOf viewController: UIViewController) -> Predicate<UIView> {
+public func beInteractible(insideOf viewController: UIViewController) -> Nimble.Predicate<UIView> {
     return beInteractible(insideOf: viewController.view)
 }
 

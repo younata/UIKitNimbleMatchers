@@ -5,7 +5,7 @@ import Nimble
 import UIKitMatchers
 
 final class BeVisibleSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         func itVerifiesWhenAViewIsVisible(_ factory: @escaping () -> (child: UIView, parent: UIView)) {
             it("it shows the view when it's non-hidden, non-transparent, with non-zero size") {
                 let (child, parent) = factory()

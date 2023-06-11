@@ -3,8 +3,8 @@ import UIKit
 import Nimble
 import Foundation
 
-public func beAnAccessibilityElement() -> Predicate<NSObject> {
-    return Predicate { received in
+public func beAnAccessibilityElement() -> Nimble.Predicate<NSObject> {
+    return Nimble.Predicate { received in
 
         guard let item = try received.evaluate() else {
             return PredicateResult(status: .fail, message: ExpectationMessage.expectedTo("be an accessibility element").appendedBeNilHint())
@@ -15,8 +15,8 @@ public func beAnAccessibilityElement() -> Predicate<NSObject> {
     }
 }
 
-public func haveAccessibilityLabel(_ label: String) -> Predicate<NSObject> {
-    return Predicate { received in
+public func haveAccessibilityLabel(_ label: String) -> Nimble.Predicate<NSObject> {
+    return Nimble.Predicate { received in
         let rawMessage = "have accessibility label '\(label)'"
 
         guard let item = try received.evaluate() else {
@@ -33,8 +33,8 @@ public func haveAccessibilityLabel(_ label: String) -> Predicate<NSObject> {
     }
 }
 
-public func haveAccessibilityTraits(_ traits: UIAccessibilityTraits) -> Predicate<NSObject> {
-    return Predicate { received in
+public func haveAccessibilityTraits(_ traits: UIAccessibilityTraits) -> Nimble.Predicate<NSObject> {
+    return Nimble.Predicate { received in
         let rawMessage = "have accessibility traits '\(traits)'"
 
         guard let item = try received.evaluate() else {
@@ -56,8 +56,8 @@ public func haveAccessibilityTraits(_ traits: UIAccessibilityTraits) -> Predicat
     }
 }
 
-public func haveAccessibilityValue(_ value: String) -> Predicate<NSObject> {
-    return Predicate { received in
+public func haveAccessibilityValue(_ value: String) -> Nimble.Predicate<NSObject> {
+    return Nimble.Predicate { received in
         let rawMessage = "have accessibility value '\(value)'"
 
         guard let item = try received.evaluate() else {
@@ -74,8 +74,8 @@ public func haveAccessibilityValue(_ value: String) -> Predicate<NSObject> {
     }
 }
 
-public func haveAccessibilityHint(_ hint: String) -> Predicate<NSObject> {
-    return Predicate { received in
+public func haveAccessibilityHint(_ hint: String) -> Nimble.Predicate<NSObject> {
+    return Nimble.Predicate { received in
         let rawMessage = "have accessibility hint '\(hint)'"
 
         guard let item = try received.evaluate() else {

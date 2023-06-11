@@ -4,8 +4,8 @@ import Nimble
 import Foundation
 
 @available(iOS 13.0, *)
-public func haveKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], title: String, discoverabilityTitle: String, image: UIImage? = nil, attributes: UIMenuElement.Attributes = [], state: UIMenuElement.State = .on) -> Predicate<UIResponder> {
-    return Predicate { received in
+public func haveKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], title: String, discoverabilityTitle: String, image: UIImage? = nil, attributes: UIMenuElement.Attributes = [], state: UIMenuElement.State = .on) -> Nimble.Predicate<UIResponder> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedTo("have key command (input: \(inputString(input: input, modifiers: modifiers)), title: \(title), discoverabilityTitle: \(discoverabilityTitle), image: \(String(describing: image)), attributes: \(attributes), state: \(state))")
 
         guard let responder = try received.evaluate() else {
@@ -37,13 +37,13 @@ public func haveKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], t
 }
 
 @available(iOS 13.0, *)
-public func haveKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], title: String, image: UIImage? = nil, attributes: UIMenuElement.Attributes = [], state: UIMenuElement.State = .on) -> Predicate<UIResponder> {
+public func haveKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], title: String, image: UIImage? = nil, attributes: UIMenuElement.Attributes = [], state: UIMenuElement.State = .on) -> Nimble.Predicate<UIResponder> {
     return haveKeyCommand(input: input, modifiers: modifiers, title: title, discoverabilityTitle: title, image: image, attributes: attributes, state: state)
 }
 
 @available(iOS 13.0, *)
-public func containKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], title: String, image: UIImage? = nil) -> Predicate<[UIKeyCommand]> {
-    return Predicate { received in
+public func containKeyCommand(input: String?, modifiers: UIKeyModifierFlags = [], title: String, image: UIImage? = nil) -> Nimble.Predicate<[UIKeyCommand]> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedTo("have key command (input: \(inputString(input: input, modifiers: modifiers)), title: \(title), discoverabilityTitle: \(title), image: \(String(describing: image)), attributes: [], state: .on)")
 
         guard let keyCommands = try received.evaluate() else {

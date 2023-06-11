@@ -6,7 +6,7 @@ import UIKitMatchers
 
 @available(iOS 13.0, *) // only because I don't want to ship with an image asset to test with.
 final class HaveImageSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         let image = UIImage(systemName: "photo")
         let otherImage = UIImage(systemName: "photo.fill")
 

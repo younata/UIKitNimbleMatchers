@@ -6,7 +6,7 @@ import Nimble
 import UIKitMatchers
 
 final class UIControlMatcherSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("UISwitch") {
             describe("beOn") {
                 it("fails always when the switch is nil") {

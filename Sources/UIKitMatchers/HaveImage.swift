@@ -11,8 +11,8 @@ extension UIImageView: ImageDisplayer {
     public var _image: UIImage? { return self.image }
 }
 
-public func haveImage(_ image: UIImage?) -> Predicate<ImageDisplayer> {
-    return Predicate { received in
+public func haveImage(_ image: UIImage?) -> Nimble.Predicate<ImageDisplayer> {
+    return Nimble.Predicate { received in
         guard let expectedImage = image else {
             return PredicateResult(status: .fail, message: ExpectationMessage.fail("Expected image was nil"))
         }
@@ -26,8 +26,8 @@ public func haveImage(_ image: UIImage?) -> Predicate<ImageDisplayer> {
     }
 }
 
-public func haveImage() -> Predicate<ImageDisplayer> {
-    return Predicate { received in
+public func haveImage() -> Nimble.Predicate<ImageDisplayer> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have any image")
 
         guard let view = try received.evaluate() else {
@@ -38,8 +38,8 @@ public func haveImage() -> Predicate<ImageDisplayer> {
     }
 }
 
-public func haveImage(_ image: UIImage?, for state: UIControl.State = .normal) -> Predicate<UIButton> {
-    return Predicate { received in
+public func haveImage(_ image: UIImage?, for state: UIControl.State = .normal) -> Nimble.Predicate<UIButton> {
+    return Nimble.Predicate { received in
         guard let expectedImage = image else {
             return PredicateResult(status: .fail, message: ExpectationMessage.fail("Expected image was nil"))
         }
@@ -54,8 +54,8 @@ public func haveImage(_ image: UIImage?, for state: UIControl.State = .normal) -
     }
 }
 
-public func haveImage(for state: UIControl.State = .normal) -> Predicate<UIButton> {
-    return Predicate { received in
+public func haveImage(for state: UIControl.State = .normal) -> Nimble.Predicate<UIButton> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have any image")
 
         guard let view = try received.evaluate() else {

@@ -2,8 +2,8 @@
 import UIKit
 import Nimble
 
-public func haveTextColor(_ color: UIColor) -> Predicate<TextDisplayer> {
-    return Predicate { received in
+public func haveTextColor(_ color: UIColor) -> Nimble.Predicate<TextDisplayer> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have text color '\(color)'")
 
         guard let view = try received.evaluate() else {
@@ -14,8 +14,8 @@ public func haveTextColor(_ color: UIColor) -> Predicate<TextDisplayer> {
     }
 }
 
-public func haveTextColor(_ color: UIColor, for state: UIControl.State = .normal) -> Predicate<UIButton> {
-    return Predicate { received in
+public func haveTextColor(_ color: UIColor, for state: UIControl.State = .normal) -> Nimble.Predicate<UIButton> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have text color '\(color)'")
 
         guard let view = try received.evaluate() else {

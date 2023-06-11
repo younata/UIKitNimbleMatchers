@@ -9,16 +9,16 @@ public protocol Switchable {
 extension UISwitch: Switchable {}
 
 // MARK: - UISwitch Matchers
-public func beOn() -> Predicate<Switchable> {
+public func beOn() -> Nimble.Predicate<Switchable> {
     return predicateSwitchOnOrOff(inverted: false)
 }
 
-public func beOff() -> Predicate<Switchable> {
+public func beOff() -> Nimble.Predicate<Switchable> {
     return predicateSwitchOnOrOff(inverted: true)
 }
 
-private func predicateSwitchOnOrOff(inverted: Bool) -> Predicate<Switchable> {
-    return Predicate { actual in
+private func predicateSwitchOnOrOff(inverted: Bool) -> Nimble.Predicate<Switchable> {
+    return Nimble.Predicate { actual in
         let message = ExpectationMessage.expectedActualValueTo("be off")
         guard let control = try actual.evaluate() else {
             return PredicateResult(status: .fail, message: message.appendedBeNilHint())

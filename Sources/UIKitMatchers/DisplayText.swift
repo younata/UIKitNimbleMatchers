@@ -20,8 +20,8 @@ extension UITextView: TextDisplayer {
     public var _textColor: UIColor? { return self.textColor }
 }
 
-public func displayText(_ text: String) -> Predicate<TextDisplayer> {
-    return Predicate { received in
+public func displayText(_ text: String) -> Nimble.Predicate<TextDisplayer> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have text '\(text)'")
 
         guard let view = try received.evaluate() else {
@@ -32,8 +32,8 @@ public func displayText(_ text: String) -> Predicate<TextDisplayer> {
     }
 }
 
-public func displayText() -> Predicate<TextDisplayer> {
-    return Predicate { received in
+public func displayText() -> Nimble.Predicate<TextDisplayer> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have any text")
 
         guard let view = try received.evaluate() else {
@@ -44,8 +44,8 @@ public func displayText() -> Predicate<TextDisplayer> {
     }
 }
 
-public func displayPlaceholder(_ string: String) -> Predicate<UITextField> {
-    return Predicate { received in
+public func displayPlaceholder(_ string: String) -> Nimble.Predicate<UITextField> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have text '\(string)'")
 
         guard let view = try received.evaluate() else {
@@ -56,8 +56,8 @@ public func displayPlaceholder(_ string: String) -> Predicate<UITextField> {
     }
 }
 
-public func displayText(_ text: String, for state: UIControl.State = .normal) -> Predicate<UIButton> {
-    return Predicate { received in
+public func displayText(_ text: String, for state: UIControl.State = .normal) -> Nimble.Predicate<UIButton> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have title '\(text)' for state \(state)")
 
         guard let view = try received.evaluate() else {
@@ -69,8 +69,8 @@ public func displayText(_ text: String, for state: UIControl.State = .normal) ->
     }
 }
 
-public func displayText(for state: UIControl.State = .normal) -> Predicate<UIButton> {
-    return Predicate { received in
+public func displayText(for state: UIControl.State = .normal) -> Nimble.Predicate<UIButton> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("have any title for state \(state)")
 
         guard let view = try received.evaluate() else {

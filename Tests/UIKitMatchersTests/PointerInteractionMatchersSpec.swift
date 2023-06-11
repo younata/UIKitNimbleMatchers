@@ -6,7 +6,7 @@ import UIKitMatchers
 
 @available(iOS 13.4, *)
 final class TestPointerHelper: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("haveTheDefaultPointerInteraction") {
             describe("for views") {
                 it("fails when the view is nil") {

@@ -6,7 +6,7 @@ import UIKitMatchers
 
 @available(iOS 13.0, *)
 final class HaveKeyCommandSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         it("does not match when the object doesn't have any key commands") {
             let object = TestResponder()
 

@@ -5,7 +5,7 @@ import Nimble
 import UIKitMatchers
 
 final class HaveTextColorSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         func itBehavesLikeATextColorDisplayer(_ subjectFactory: @escaping (UIColor) -> TextDisplayer) {
             it("matches when the textColor has the expected color") {
                 let subject = subjectFactory(.blue)

@@ -5,7 +5,7 @@ import Nimble
 import UIKitMatchers
 
 final class DisplayTextSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         func itBehavesLikeATextDisplayer(_ subjectFactory: @escaping (String?) -> TextDisplayer) {
             describe("as a text displayer") {
                 it("matches when the displayer has the expected text") {

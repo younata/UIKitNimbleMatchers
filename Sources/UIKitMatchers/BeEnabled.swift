@@ -10,8 +10,8 @@ extension UIControl: Enablable {}
 extension UIAlertAction: Enablable {}
 extension UIBarButtonItem: Enablable {}
 
-public func beEnabled() -> Predicate<Enablable> {
-    return Predicate { received in
+public func beEnabled() -> Nimble.Predicate<Enablable> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("be enabled")
 
         guard let object = try received.evaluate() else {

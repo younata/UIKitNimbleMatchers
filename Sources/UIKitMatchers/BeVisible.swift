@@ -2,8 +2,8 @@
 import UIKit
 import Nimble
 
-public func beVisible(insideOf containingView: UIView) -> Predicate<UIView> {
-    return Predicate { received in
+public func beVisible(insideOf containingView: UIView) -> Nimble.Predicate<UIView> {
+    return Nimble.Predicate { received in
         let message = ExpectationMessage.expectedActualValueTo("be visible")
 
         guard let view = try received.evaluate() else {
@@ -14,7 +14,7 @@ public func beVisible(insideOf containingView: UIView) -> Predicate<UIView> {
     }
 }
 
-public func beVisible(insideOf viewController: UIViewController) -> Predicate<UIView> {
+public func beVisible(insideOf viewController: UIViewController) -> Nimble.Predicate<UIView> {
     return beVisible(insideOf: viewController.view)
 }
 
